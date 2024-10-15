@@ -6,7 +6,7 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="Conversas do WhatsApp", layout="wide")
 
 # Título da aplicação
-st.title("CRM WHATSAPP")
+st.title("Conversas do WhatsApp")
 
 # Caminho da pasta onde as conversas estão armazenadas
 folder_path = 'conversas'
@@ -28,7 +28,6 @@ conversations = read_conversations(folder_path)
 def generate_conversation_cards_html(conversations):
     html_cards = ""
     for i, conv in enumerate(conversations):
-        # O conteúdo será truncado para exibir apenas os 100 primeiros caracteres
         card_html = f"""
         <div class="card" draggable="true" id="conv-{i}">
             <h4>{conv['name']}</h4>
@@ -52,24 +51,52 @@ html_code = f"""
     <title>Drag and Drop</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
     <style>
+        body {{
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 20px;
+        }}
         .container {{
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             margin-top: 20px;
         }}
         .column {{
-            width: 200px;
+            width: 23%;
             min-height: 300px;
             padding: 10px;
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }}
+        .column h3 {{
+            text-align: center;
+            color: #333;
         }}
         .card {{
-            background-color: #fff;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            cursor: move;
+            background-color: #fafafa;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }}
+        .card:hover {{
+            transform: scale(1.02);
+        }}
+        button {{
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }}
+        button:hover {{
+            background-color: #0056b3;
         }}
     </style>
 </head>
