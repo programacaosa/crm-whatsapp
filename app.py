@@ -3,10 +3,10 @@ import os
 import streamlit.components.v1 as components
 
 # Configurações da página
-st.set_page_config(page_title="Conversas do WhatsApp", layout="wide")
+st.set_page_config(page_title="CRM Whatsapp. Arraste as conversar para a coluna desejada", layout="wide")
 
 # Título da aplicação
-st.title("Conversas do WhatsApp")
+st.title("CRM Whatsapp. Arraste as conversar para a coluna desejada")
 
 # Caminho da pasta onde as conversas estão armazenadas
 folder_path = 'conversas'
