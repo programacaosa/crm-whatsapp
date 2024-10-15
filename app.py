@@ -3,10 +3,10 @@ import os
 import streamlit.components.v1 as components
 
 # Configurações da página
-st.set_page_config(page_title="CRM Whatsapp. Arraste as conversar para a coluna desejada", layout="wide")
+st.set_page_config(page_title="CRM WhatsApp: Arraste as conversas para a coluna desejada", layout="wide")
 
 # Título da aplicação
-st.title("CRM Whatsapp. Arraste as conversar para a coluna desejada")
+st.markdown("<h2 style='font-size: 24px;'>CRM WhatsApp: Arraste as conversas para a coluna desejada</h2>", unsafe_allow_html=True)
 
 # Caminho da pasta onde as conversas estão armazenadas
 folder_path = 'conversas'
@@ -31,8 +31,8 @@ def generate_conversation_cards_html(conversations):
         card_html = f"""
         <div class="card" draggable="true" id="conv-{i}">
             <h4>{conv['name']}</h4>
-            <p id="short-{i}">{conv['content'][:100]}... <button onclick="showFullConversation({i})">Ver mais</button></p>
-            <p id="full-{i}" style="display:none;">{conv['content']} <button onclick="hideFullConversation({i})">Ver menos</button></p>
+            <p id="short-{i}" class="card-content">{conv['content'][:100]}... <button onclick="showFullConversation({i})">Ver mais</button></p>
+            <p id="full-{i}" style="display:none;" class="card-content">{conv['content']} <button onclick="hideFullConversation({i})">Ver menos</button></p>
         </div>
         """
         html_cards += card_html
@@ -85,6 +85,9 @@ html_code = f"""
         }}
         .card:hover {{
             transform: scale(1.02);
+        }}
+        .card-content {{
+            color: #6a0dad; /* Cor roxa para o texto */
         }}
         button {{
             background-color: #007bff;
@@ -148,4 +151,4 @@ components.html(html_code, height=600)
 
 # Rodapé
 st.markdown("<hr>", unsafe_allow_html=True)
-st.write("Desenvolvido com ❤️ por [Seu Nome]")  # Personalize seu nome aqui
+st.write("Desenvolvido com ❤️ por Anderson Azevedo Riso ")  # Personalize seu nome aqui
